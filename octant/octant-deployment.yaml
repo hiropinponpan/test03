@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: octant-deployment
+  labels:
+    app: octant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: octant
+  template:
+    metadata:
+      labels:
+        app: octant
+    spec:
+      containers:
+      - name: octant
+        image: akibahiroki/octant:latest
+        ports:
+        - containerPort: 7777
+      serviceAccount: octant
